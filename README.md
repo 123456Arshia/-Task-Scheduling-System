@@ -1,56 +1,116 @@
-# Task Scheduling Simulation
+# Task Scheduler
 
-This C++ program simulates task scheduling using two different scheduling algorithms: Priority Scheduling and Round-Robin Scheduling. The program uses various data structures and classes to manage tasks and analyze efficiency.
+This program simulates a task scheduler that uses both priority-based scheduling and round-robin scheduling algorithms. It allows users to input task details such as task ID, priority, and execution time, and then calculates the average waiting time for executing all tasks using an efficiency analyzer.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Classes](#classes)
-- [Usage](#usage)
-- [Simulation](#simulation)
-- [Efficiency Analysis](#efficiency-analysis)
-- [Example](#example)
-- [Contributing](#contributing)
-- [License](#license)
+## Prerequisites
 
-## Introduction
-This program demonstrates task scheduling using two different algorithms: Priority Scheduling and Round-Robin Scheduling. It provides a way to input task details and simulates their execution. The waiting times of executed tasks are collected and analyzed to calculate average waiting times.
+- C++ compiler
+- Standard Template Library (STL)
 
-## Classes
-1. `Task`: Represents a task with an ID, priority, and execution time.
-2. `ComparePriority`: Comparator class used to compare tasks based on their priority.
-3. `PriorityScheduler`: Implements priority-based task scheduling using a priority queue.
-4. `RoundRobinScheduler`: Implements round-robin task scheduling using a deque.
-5. `EfficiencyAnalyzer`: Contains a static method to calculate the average waiting time from a vector of waiting times.
+## Getting Started
+
+1. Clone the repository or download the source code file.
+
+```shell
+git clone https://github.com/23456Arshia/-Task-Scheduling-System
+```
+
+2. Compile the source code using a C++ compiler.
+
+```shell
+g++ main.cpp -o task_scheduler
+```
+
+3. Run the executable.
+
+```shell
+./task_scheduler
+```
 
 ## Usage
-1. Make sure you have a C++ compiler installed on your system.
-2. Clone this repository to your local machine.
-3. Navigate to the directory containing the program files.
-4. Compile the program using your C++ compiler: `g++ -o scheduler main.cpp`.
-5. Run the executable: `./scheduler`.
-6. Follow the prompts to input task details and observe the simulation results.
 
-## Simulation
-The program simulates task execution using random execution times. It utilizes the `executeTask` function to generate a random execution time for each task within its specified execution time range.
+1. Enter the number of tasks when prompted.
 
-## Efficiency Analysis
-The `EfficiencyAnalyzer` class provides a static method to calculate the average waiting time of executed tasks. It takes a vector of waiting times as input and returns the average.
-
-## Example
-```plaintext
+```shell
 Enter the number of tasks: 3
-Enter details for Task 1 (id priority execution_time): 101 2 8
-Enter details for Task 2 (id priority execution_time): 102 1 5
-Enter details for Task 3 (id priority execution_time): 103 3 10
-Average Waiting Time: 7.33333
-Contributing
+```
 
-Feel free to contribute, enhance, and modify the program as needed. If you find any issues or have suggestions for improvements, please open an issue or pull request.
+2. For each task, enter the task details: ID, priority, and execution time.
 
-License
+```shell
+Enter details for Task 1 (id priority execution_time): 1 2 5
+Enter details for Task 2 (id priority execution_time): 2 1 8
+Enter details for Task 3 (id priority execution_time): 3 3 3
+```
 
-This project is licensed under the MIT License.
+3. The program will simulate task execution using both priority-based scheduling and round-robin scheduling algorithms.
 
-Disclaimer: This program is for educational purposes and may not cover all possible edge cases or real-world scenarios. Use it as a starting point for understanding task scheduling algorithms in a simulated environment.
+1. Finally, the program will display the average waiting time for executing all tasks.
 
+```shell
+Average Waiting Time: 5.66667
+```
 
+## Classes
+
+### Task
+
+Represents a task with an ID, priority, and execution time.
+
+#### Properties
+
+- `task_id` (int): The ID of the task.
+- `priority` (int): The priority of the task.
+- `execution_time` (int): The execution time required for the task.
+
+#### Methods
+
+- `Task(int id, int p, int time)`: Constructor method to initialize the task with the given ID, priority, and execution time.
+
+### ComparePriority
+
+Comparison functor used to compare tasks based on their priorities.
+
+#### Methods
+
+- `bool operator()(const Task& t1, const Task& t2)`: Comparison operator overload to compare two tasks based on their priorities.
+
+### PriorityScheduler
+
+A priority-based task scheduler that uses a priority queue to schedule tasks.
+
+#### Properties
+
+- `task_queue` (std::priority_queue\<Task, std::vector<Task>, ComparePriority>): The priority queue to store the tasks.
+
+#### Methods
+
+- `void addTask(const Task& task)`: Adds a task to the task queue.
+- `bool isEmpty() const`: Checks if the task queue is empty.
+- `Task getNextTask()`: Retrieves the next task with the highest priority from the task queue.
+
+### RoundRobinScheduler
+
+A round-robin task scheduler that uses a deque to schedule tasks.
+
+#### Properties
+
+- `task_queue` (std::deque<Task>): The deque to store the tasks.
+
+#### Methods
+
+- `void addTask(const Task& task)`: Adds a task to the task queue.
+- `bool isEmpty() const`: Checks if the task queue is empty.
+- `Task getNextTask()`: Retrieves the next task in a round-robin manner from the task queue.
+
+### EfficiencyAnalyzer
+
+A utility class to calculate efficiency statistics.
+
+#### Methods
+
+- `static double calculateAverageWaitingTime(const std::vector<int>& waiting_times)`: Calculates the average waiting time based on a vector of waiting times.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
