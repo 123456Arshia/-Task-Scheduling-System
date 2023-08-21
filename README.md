@@ -1,6 +1,3 @@
-# Task-Scheduling-System
-This repository contains a C++ program that simulates task scheduling using two different scheduling algorithms: priority-based scheduling and round-robin scheduling. The program demonstrates the implementation of these scheduling algorithms, as well as the calculation of average waiting times for tasks.
-
 # Task Scheduling Simulation
 
 This C++ program simulates task scheduling using different scheduling algorithms: Priority Scheduling and Round-Robin Scheduling. The program uses various data structures and classes to manage tasks and analyze efficiency.
@@ -26,10 +23,12 @@ This program demonstrates task scheduling using two different algorithms: Priori
 5. `EfficiencyAnalyzer`: Contains a static method to calculate the average waiting time from a vector of waiting times.
 
 ## Usage
-1. Input the number of tasks you want to simulate.
-2. For each task, input its ID, priority, and execution time.
-3. The program will execute tasks using both Priority Scheduling and Round-Robin Scheduling.
-4. The average waiting time for both scheduling algorithms will be displayed.
+1. Make sure you have a C++ compiler installed on your system.
+2. Clone this repository to your local machine using `git clone https://github.com/your-username/task-scheduling-simulation.git`.
+3. Navigate to the cloned directory: `cd task-scheduling-simulation`.
+4. Compile the program using your C++ compiler: `g++ -o scheduler main.cpp`.
+5. Run the executable: `./scheduler`.
+6. Follow the prompts to input task details and observe the simulation results.
 
 ## Simulation
 The program simulates task execution using random execution times. It utilizes the `executeTask` function to generate a random execution time for each task within its specified execution time range.
@@ -44,4 +43,3 @@ Enter details for Task 1 (id priority execution_time): 101 2 8
 Enter details for Task 2 (id priority execution_time): 102 1 5
 Enter details for Task 3 (id priority execution_time): 103 3 10
 Average Waiting Time: 7.33333
-
